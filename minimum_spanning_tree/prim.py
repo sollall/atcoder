@@ -1,5 +1,5 @@
-# coding: utf-8
-# Your code here!
+
+#https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_12_A&lang=jp
 
 import heapq
 
