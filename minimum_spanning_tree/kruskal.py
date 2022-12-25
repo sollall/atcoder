@@ -1,5 +1,6 @@
-# coding: utf-8
-# Your code here!
+#計算量　O(ElogV) or O(ElogE)
+#https://atcoder.jp/contests/typical-algorithm/tasks/typical_algorithm_f
+
 class UnionFind():
     # 作りたい要素数nで初期化
     # 使用するインスタンス変数の初期化
@@ -46,6 +47,18 @@ class UnionFind():
     def Count(self, x):
         return -self.root[self.Find_Root(x)]
 
+def kruscal(n_node,sorted_edges):
+    
+    total_cost=0
+    uf=UnionFind(n_node)
+    for edge in sorted_edges:
+        cost,u,v=edge
+        if not uf.isSameGroup(u,v):
+            uf.Unite(u,v)
+            total_cost+=cost
+    return total_cost,uf
+
+#################################################################            
 
 V,E=map(int,input().split())
 
@@ -53,20 +66,10 @@ edges=[]
 uf=UnionFind(V)
 
 for _ in range(E):
-    s,t,w=map(int,input().split())
-    edges.append([w,s,t])
+    u,v,c=map(int,input().split())
+    edges.append([c,u,v])
 edges.sort()
 
+ans,uf=kruscal(V,edges[:])
 
-ans=0
-
-for edge in edges:
-    w,s,t=edge
-    if not uf.isSameGroup(s,t):
-        ans+=w
-        uf.Unite(s,t)
-    
 print(ans)
-
-
-

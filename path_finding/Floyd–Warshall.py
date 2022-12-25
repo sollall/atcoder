@@ -13,6 +13,7 @@ while True:
             cost[b][a]=min(c,cost[b][a])
             MAX=max(MAX,a,b)
         
+        #経路の点が一番上のイテレータ
         for k in range(10):
             for s in range(10):
                 for t in range(10):
