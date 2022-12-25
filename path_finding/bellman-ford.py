@@ -1,29 +1,17 @@
-V,E,r=map(int,input().split())
+#https://atcoder.jp/contests/abc061/tasks/abc061_d
 
-edges=[]
-for _ in range(E):
-    s,t,d=map(int,input().split())
-    edges.append([s,t,d])
-
-
-cost=[float("inf")]*V
-cost[r]=0
-
-for i in range(V+1):
-    judge=False
+def bellman_ford(start,edges):
+    V=len(edges)
+    all_cost=[float("inf")]*V
+    all_cost[start]=0
     
-    for edge in edges:
-        s,t,d=edge
-        if cost[t]>cost[s]+d:
-            cost[t]=cost[s]+d
-            judge=True
-    if i==V and judge:
-        print("NEGATIVE CYCLE")
-        exit()
-        
-        
-for c in cost:
-    if c==float("inf"):
-        print("INF")
-    else:
-        print(c)
+    is_roop=False
+    for i in range(V*2+1):
+        for now,edge in enumerate(edges):
+            for nxt,cost in edge.items():
+                if all_cost[nxt]>all_cost[now]+cost:
+                    all_cost[nxt]=all_cost[now]+cost
+                    if nxt==V-1 and i==V*2:
+                        is_roop=True
+    
+    return is_roop,all_cost[:]
