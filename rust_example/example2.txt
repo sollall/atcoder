@@ -1,0 +1,17 @@
+// Your code here!
+use proconio::input;
+
+fn main(){
+
+	input! {
+      n:usize,
+      m:[usize;n],
+  	}
+  	
+	let ans = m
+  			.into_iter()
+  			.map(|x| if x<80 {80-x} else {0})
+			.sum::<usize>();
+  
+    println!("{}",ans);
+}
