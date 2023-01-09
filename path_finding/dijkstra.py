@@ -1,6 +1,6 @@
 import heapq as hq
 
-def bfs(edges,start):
+def dijkstra(edges,start):
     n_node=len(edges)
     costs=[float("inf") for i in range(N)]
     
@@ -14,3 +14,7 @@ def bfs(edges,start):
                 hq.heappush(queue,[cost+n_cost,nxt])
  
     return costs[:]
+
+#計算量O((V+E)logV
+#移動コストが0かnの二択なら01bfsができるけど計算量はO(V+E)になるくらい
+#01はdequeにして0なら先頭、nなら後ろに入れる
