@@ -1,0 +1,21 @@
+// Your code here!
+use proconio::input;
+fn main(){
+
+	input! {
+      n:usize,
+  	}
+  
+    if n == 0 {
+        println!("1");
+        return;
+    }
+    let mut dp = vec![0usize; n+1];
+    dp[0] = 1;
+    dp[1] = 1;
+    for i in 2..=n {
+        dp[i] = dp[i-1] + dp[i-2];
+    }
+    println!("{}", dp[n]);
+    
+}
