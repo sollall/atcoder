@@ -35,5 +35,5 @@ class SegTree:
                 res = self.segfunc(res,self.tree[r-1])
             l >>= 1
             r >>= 1
-        return re
+        return res
         
